@@ -1,0 +1,7 @@
+﻿  FindConnectedCities.cpp
+e:\..learning\cppprogramming\programs\dynamicprogramming\findconnectedcities.cpp(23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+e:\..learning\cppprogramming\programs\dynamicprogramming\findconnectedcities.cpp(19): warning C4100: 'n': unreferenced formal parameter
+  DynamicProgramming.cpp
+  Generating Code...
+  DynamicProgramming.vcxproj -> E:\..Learning\CppProgramming\Programs\x64\Debug\DynamicProgramming.exe
+  DynamicProgramming.vcxproj -> E:\..Learning\CppProgramming\Programs\x64\Debug\DynamicProgramming.pdb (Partial PDB)
