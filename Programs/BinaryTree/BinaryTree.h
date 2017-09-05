@@ -20,22 +20,6 @@ public:
 		DeleteNodes(m_pRoot);
 	}
 
-	int height(Node* node)
-	{
-		if (!node)
-			return 0;
-		else
-		{
-			int LHeight = height(node->pLeft);
-			int RHeight = height(node->pRight);
-			if (LHeight > RHeight)
-				return LHeight + 1;
-			else
-				return RHeight + 1;
-		}
-	}
-
-
 	void Visit(const Node * CurNode) const
 	{
 		std::cout << CurNode->nData << std::endl;
@@ -127,6 +111,11 @@ public:
 		}
 		return bSuccess;
 	}
+
+
+	void LevelOrder(const Node* node) const;
+	void BinaryTree::LevelOrderLineByLine(const Node * node) const;
+	int Height(const Node* node) const;
 
 private:
 

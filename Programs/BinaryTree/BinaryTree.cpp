@@ -1,16 +1,69 @@
-#include "BinaryTree.h"
-#include <iostream>
+#include  "BinaryTree.h"
+#include <queue>
 
-int main()
+
+int BinaryTree::Height(const Node* node) const
 {
-	BinaryTree MyTree;
+	if (!node)
+		return 0;
+	else
+	{
+		int LHeight = Height(node->pLeft);
+		int RHeight = Height(node->pRight);
+		if (LHeight > RHeight)
+			return LHeight + 1;
+		else
+			return RHeight + 1;
+	}
+}
 
-	MyTree.AddMultipleNode({100,50,200,1,-1,400,180,40,60,150,250});
+/******************************************************************************
+* Level Order Tree Traversal : Level order traversal of a tree is breadth first traversal for the tree.
+* http://www.geeksforgeeks.org/level-order-tree-traversal/
+******************************************************************************/
+void BinaryTree::LevelOrder(const Node * node) const
+{
+	std::queue <const Node*> qNodes;
+	qNodes.push(node);
 
-	std::cout << MyTree.height(MyTree.m_pRoot) << std::endl;
+	while (!qNodes.empty())
+	{
+		Visit(qNodes.front());
+		const Node* CurrNode = qNodes.front();
+		qNodes.pop();
+		if (CurrNode->pLeft)
+			qNodes.push(CurrNode->pLeft);
+		if (CurrNode->pRight)
+			qNodes.push(CurrNode->pRight);
+	}
+}
 
-	MyTree.PreOrder(MyTree.m_pRoot);
+/******************************************************************************
+* Print level order traversal line by line | Set 1
+* http://www.geeksforgeeks.org/print-level-order-traversal-line-line/
+******************************************************************************/
+void BinaryTree::LevelOrderLineByLine(const Node * node) const
+{
+	std::queue <const Node*> qNodes;
+	qNodes.push(node);
 
-	return 0;
+	while (true)
+	{
+		size_t nLevelNodeCount = qNodes.size();
+		if (0 == nLevelNodeCount)
+			break;
+		while (0 != nLevelNodeCount)
+		{
+			std::cout << qNodes.front()->nData << " ";
+			const Node* CurrNode = qNodes.front();
+			qNodes.pop();
+			if (CurrNode->pLeft)
+				qNodes.push(CurrNode->pLeft);
+			if (CurrNode->pRight)
+				qNodes.push(CurrNode->pRight);
+			nLevelNodeCount--;
+		}
+		std::cout << std::endl;
+	}
 }
 
